@@ -5,7 +5,7 @@ var port =process.env.PORT || 3000;
 let app = express();
 function appdialog(){
     this.app = dialogflow({debug: true});
-    this.app.intent('take me', (conv) => {
+    this.app.intent('hi', (conv) => {
          conv.ask('Hello I am ton. !');
     console.log("OK get in intent");
     });

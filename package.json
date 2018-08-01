@@ -9,6 +9,7 @@
   "author": "Auttapon siriwaramas",
   "license": "ISC",
   "dependencies": {
+    "actions-on-google": "^2.0.0"
   },
   "start": "node server.js"
   

@@ -16,7 +16,6 @@ function appdialog(){
 }
  
 let app1 = new appdialog();
-let app2 = new appdialog1();
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");

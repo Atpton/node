@@ -7,7 +7,7 @@ function appdialog(){
     this.app = dialogflow({debug: true});
     this.app.intent('hi', (conv) => {
          conv.ask('Hello, World!');
-    console.log("OK get in intent");s
+    console.log("OK get in intent");
     });
 } 
 

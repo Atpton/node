@@ -24,6 +24,6 @@ app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
     next();
-},app2.app);
+},[app1.app,app2.app]);
 app.listen(port);
 console.log("Create Server port :"+port);

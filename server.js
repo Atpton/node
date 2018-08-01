@@ -12,7 +12,11 @@ function appdialog(){
     this.app.intent('hi', (conv) => {
       conv.ask('Hello I am ton. !');
       console.log("OK get in hi intent");
- });
+    });
+      this.app.intent('AIS Play Service', (conv) => {
+      conv.ask('hello Ais play Service. !');
+      console.log("OK get in Ais play Service intent");
+    });
 }
  
 let app1 = new appdialog();

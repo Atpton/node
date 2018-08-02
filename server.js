@@ -13,6 +13,10 @@ function appdialog(){
       conv.ask("Hello i'm ton do you know Liverpool Football club !.");
       console.log("OK get in hi intent");
     });
+    this.app.intent('Ais Play Football', (conv) => {
+      conv.ask("Hello i'm ton do you know Liverpool Football club !.");
+      console.log("OK get in hi intent");
+    });
       this.app.intent('AIS Play Service', (conv) => {
       conv.ask('hello Ais play Service. !');
       console.log("OK get in Ais play Service intent");

@@ -1,8 +1,10 @@
 const { dialogflow } =  require('actions-on-google'); 
 const bodyParser = require('body-parser');
 const express = require('express');
+const serveStatic = require('serve-static');
 var port =process.env.PORT || 3000;
 let app = express();
+app.use(serveStatic('./'));
 function appdialog(){
     this.app = dialogflow({debug: true});
     this.app.intent('Default Welcome Intent', (conv) => {

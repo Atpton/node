@@ -17,6 +17,10 @@ function appdialog(){
       conv.ask('hello Ais play Service. !');
       console.log("OK get in Ais play Service intent");
     });
+    this.app.intent('introduce', (conv) => {
+      conv.ask("hello i'm ton are you ok?");
+      console.log("OK get in introduce intent");
+    });
 }
  
 let app1 = new appdialog();
@@ -24,6 +28,6 @@ app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
     next();
-},[app1.app]);
+},app1.app);
 app.listen(port);
 console.log("Create Server port :"+port);

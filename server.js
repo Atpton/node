@@ -17,6 +17,10 @@ function appdialog(){
       conv.ask('hello Ais play Service. !');
       console.log("OK get in Ais play Service intent");
     });
+     this.app.intent('Check Balance', (conv) => {
+      conv.ask('hello Check Balance Service. !');
+      console.log("OK get in Ais play Service intent");
+    });
 }
  
 let app1 = new appdialog();

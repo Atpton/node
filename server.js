@@ -9,17 +9,13 @@ function appdialog(){
          conv.ask('\n Welcome to Your Nightmare. !');
     console.log("OK get in Default intent ");
     });
-    this.app.intent('hi', (conv) => {
-      conv.ask('Hello I am ton. !');
+    this.app.intent('Play Football', (conv) => {
+      conv.ask("Hello i'm ton do you know Liverpool Football club !.");
       console.log("OK get in hi intent");
     });
       this.app.intent('AIS Play Service', (conv) => {
       conv.ask('hello Ais play Service. !');
       console.log("OK get in Ais play Service intent");
-    });
-    this.app.intent('introduce', (conv) => {
-      conv.ask("hello i'm ton are you ok?");
-      console.log("OK get in introduce intent");
     });
 }
  

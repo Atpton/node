@@ -10,11 +10,11 @@ function appdialog(){
     console.log("OK get in Default intent ");
     });
     this.app.intent('Play Football', (conv) => {
-      conv.ask("Hello i'm ton do you know Liverpool Football club !.");
+      conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
       console.log("OK get in hi intent");
     });
     this.app.intent('Ais Play Football', (conv) => {
-      conv.ask("Hello i'm ton do you know Liverpool Football club !.");
+      conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
       console.log("OK get in hi intent");
     });
       this.app.intent('AIS Play Service', (conv) => {

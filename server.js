@@ -2,6 +2,7 @@ const { dialogflow } =  require('actions-on-google');
 const bodyParser = require('body-parser');
 const express = require('express');
 const serveStatic = require('serve-static');
+var { Image } = require('actions-on-google');
 var port =process.env.PORT || 3000;
 let app = express();
 app.use(serveStatic('./'));
@@ -13,10 +14,18 @@ function appdialog(){
     });
     this.app.intent('Play Football', (conv) => {
       conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
+      conv.ask(new Image({
+        url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
+        alt: 'Image alternate text',
+      }));
       console.log("OK get in hi intent");
     });
     this.app.intent('Ais Play Football', (conv) => {
       conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
+      conv.ask(new Image({
+        url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
+        alt: 'Image alternate text',
+      }));
       console.log("OK get in hi intent");
     });
       this.app.intent('AIS Play Service', (conv) => {

@@ -102,7 +102,7 @@ app.use("/",(req,res,next)=>{
     console.log('Invalid Bing Search API subscription key!');
     console.log('Please paste yours into the source code.');
 }
-    next();
+ //   next();
 },app1.app);
 app.listen(port);
 console.log("Create Server port :"+port);

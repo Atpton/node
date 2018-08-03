@@ -2,6 +2,7 @@ const { dialogflow } =  require('actions-on-google');
 const bodyParser = require('body-parser');
 const express = require('express');
 const serveStatic = require('serve-static');
+var fs = require('fs');
 var { Image } = require('actions-on-google');
 var port =process.env.PORT || 3000;
 let app = express();
@@ -74,6 +75,13 @@ function appdialog(){
     console.log("OK get in Default intent ");
     });
     this.app.intent('Play Football', (conv) => {
+     fs.readFile('./test.txt',(err,data)=>{
+       if(err){
+        console.log(err);
+       }else{
+        conv.ask(data.toString());
+       }
+     });
       conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
       conv.ask(new Image({
       //  url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
@@ -105,15 +113,15 @@ let app1 = new appdialog();
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
-    if (subscriptionKey.length === 32) {
+  /*  if (subscriptionKey.length === 32) {
      console.log("before call function");
     bing_image_search(term);
      console.log("after call function");
 } else {
     console.log('Invalid Bing Search API subscription key!');
     console.log('Please paste yours into the source code.');
-}
- //   next();
+}*/
+    next();
 },app1.app);
 app.listen(port);
 console.log("Create Server port :"+port);

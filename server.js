@@ -35,6 +35,9 @@ let response_handler = function (response) {
         body = JSON.stringify(JSON.parse(body), null, '  ');
         console.log('\nJSON Response:\n');
         console.log(body);
+        var obj  = JSON.parse(body);
+        console.log(obj['value']);
+        console.log(obj['value'].length);
     });
     response.on('error', function (e) {
         console.log('Error: ' + e.message);

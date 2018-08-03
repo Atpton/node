@@ -36,8 +36,14 @@ let response_handler = function (response) {
         console.log('\nJSON Response:\n');
         console.log(body);
         var obj  = JSON.parse(body);
-        console.log(obj['value']);
+     var count = 1;
+      for(element in obj['value']){
+        if(obj['value'][element]['contentUrl']){
+          console.log(`${count++} :obj['value'][element]['contentUrl']`);
+      }else console.log(`${count++}: undefined`);
+}  
         console.log(obj['value'].length);
+     
     });
     response.on('error', function (e) {
         console.log('Error: ' + e.message);

@@ -6,6 +6,58 @@ var { Image } = require('actions-on-google');
 var port =process.env.PORT || 3000;
 let app = express();
 app.use(serveStatic('./'));
+
+
+let https = require('https');
+
+
+ 
+let subscriptionKey = '31bbf02e5b6940b99e07a7e07acd4180';
+ 
+let host = 'api.cognitive.microsoft.com';
+let path = '/bing/v7.0/images/search';
+
+let term = 'liverpool';
+
+let response_handler = function (response) {
+    let body = '';
+
+    response.on('data', function (d) {
+        body += d;
+    });
+
+    response.on('end', function () {
+        console.log('\nRelevant Headers:\n');
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log('\nJSON Response:\n');
+        console.log(body);
+    });
+    response.on('error', function (e) {
+        console.log('Error: ' + e.message);
+    });
+};
+
+let bing_image_search = function (search) {
+  console.log('Searching images for: ' + term);
+  let request_params = {
+        method : 'GET',
+        hostname : host,
+        path : path + '?q=' + encodeURIComponent(search),
+        headers : {
+            'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
+    console.log(request_params);
+    let req = https.request(request_params, response_handler);
+ 
+    req.end();
+}
+
+
 function appdialog(){
     this.app = dialogflow({debug: true});
     this.app.intent('Default Welcome Intent', (conv) => {
@@ -42,7 +94,17 @@ let app1 = new appdialog();
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
+    if (subscriptionKey.length === 32) {
+    bing_image_search(term);
+} else {
+    console.log('Invalid Bing Search API subscription key!');
+    console.log('Please paste yours into the source code.');
+}
     next();
 },app1.app);
 app.listen(port);
 console.log("Create Server port :"+port);
+
+
+
+

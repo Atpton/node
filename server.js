@@ -42,8 +42,8 @@ let response_handler = function (response) {
           console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
       }else console.log(`${count++}: undefined`);
 }  
-        console.log(obj['value'].length);
-     
+        console.log("end function");
+      
     });
     response.on('error', function (e) {
         console.log('Error: ' + e.message);
@@ -106,7 +106,9 @@ app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
     if (subscriptionKey.length === 32) {
+     console.log("before call function");
     bing_image_search(term);
+     console.log("after call function");
 } else {
     console.log('Invalid Bing Search API subscription key!');
     console.log('Please paste yours into the source code.');

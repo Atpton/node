@@ -67,7 +67,8 @@ function appdialog(){
     this.app.intent('Play Football', (conv) => {
       conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
       conv.ask(new Image({
-        url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
+      //  url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
+        url:"http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg",
         alt: 'Image alternate text',
       }));
       console.log("OK get in hi intent");
@@ -75,7 +76,8 @@ function appdialog(){
     this.app.intent('Ais Play Football', (conv) => {
       conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
       conv.ask(new Image({
-        url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
+     //   url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
+        url:"http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg",
         alt: 'Image alternate text',
       }));
       console.log("OK get in hi intent");

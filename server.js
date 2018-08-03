@@ -96,12 +96,12 @@ let app1 = new appdialog();
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
-    /*if (subscriptionKey.length === 32) {
+    if (subscriptionKey.length === 32) {
     bing_image_search(term);
 } else {
     console.log('Invalid Bing Search API subscription key!');
     console.log('Please paste yours into the source code.');
-}*/
+}
     next();
 },app1.app);
 app.listen(port);

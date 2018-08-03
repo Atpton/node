@@ -79,7 +79,8 @@ function appdialog(){
        if(err){
         console.log(err);
        }else{
-        conv.ask(data.toString());
+        console.log(data.toString());
+        //conv.ask(data.toString());
        }
      });
       conv.ask("Hello i'm ton do you know Liverpool Football club ?.");

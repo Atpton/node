@@ -12,7 +12,7 @@
     "actions-on-google": "^2.0.0",
     "express": "^4.14.0"
   },
-  "start": "node server.js"
+  "start": "node server1.js"
   
   
 }

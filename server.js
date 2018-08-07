@@ -187,7 +187,7 @@ let bing_image_search = function (search) {
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
-    let req = https.request(request_params, response_handler);
+    let req = http.request(request_params, response_handler);
     console.log("Test");
     req.end();
 }

@@ -188,13 +188,15 @@ let bing_image_search = function (search) {
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
+ console.log("Test head: "+request_params);
     let req = https.request(request_params, response_handler);
     console.log("Test");
     req.end();
 }
 app.get('/',function(req,res){
   bing_image_search(term);
-  res.send("Hello world "+term);
+ 
+  //res.send("Hello world "+term);
   console.log("Search "+term);
 });
 var server = http.createServer(app).listen(port,()=>{console.log("Create Server"+port)});

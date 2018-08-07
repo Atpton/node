@@ -131,6 +131,7 @@
 
 
 const http = require('http');
+let https = require('https');
 const bodyParser = require('body-parser');
 const express = require('express');
 const serveStatic = require('serve-static');
@@ -187,7 +188,7 @@ let bing_image_search = function (search) {
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
-    let req = http.request(request_params, response_handler);
+    let req = https.request(request_params, response_handler);
     console.log("Test");
     req.end();
 }

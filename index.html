@@ -28,8 +28,8 @@
                       
                     },
                     function(data,status){
-                       var htmlImg =  JSON.parse(data)['value'];
-                        $('#content').html(htmlImg);
+                       var htmlImg =  JSON.parse(data);
+                        $('#content').html(htmlImg['value']);
                         console.log("Data: " + htmlImg + "\nStatus: " + status);
                     });
                 });

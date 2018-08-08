@@ -204,7 +204,7 @@ app.get('/home',(req,res)=>{
    });
 });
 
-app.get('/',function(req,res){
+app.get('/getitem',function(req,res){
   //bing_image_search(term);
    console.log('Searching images for: ' + term);
    let request_params = {

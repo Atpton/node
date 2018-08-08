@@ -193,6 +193,17 @@ let bing_image_search = function (search) {
     console.log("Test");
     req.end();
 }
+
+app.get('/home',(req,res)=>{
+   var pathFile = path.join(__dirname,"./index.html");
+   console.log(__dirname);
+   console.log(pathFile);
+   res.sendFile(pathFile,function(err){
+       if(err) console.log(`error ${err}`);
+       else console.log("it's ok");
+   });
+});
+
 app.get('/',function(req,res){
   //bing_image_search(term);
    console.log('Searching images for: ' + term);

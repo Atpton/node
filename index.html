@@ -21,11 +21,12 @@
 }*/
          $(document).ready(function(){
                 $("#bt1").click(function(){
-                    //let text = document.getElementById('t').value;
+                    let textVal = document.getElementById('t').value;
+                    console.log('Query '+text);
                     let url = `https://${host}/getitem`;
                     $.get(url,
                     {
-                      
+                      text:textVal
                     },
                     function(data,status){
                        //var htmlImg =  JSON.parse(data);

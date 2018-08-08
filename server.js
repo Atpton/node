@@ -206,7 +206,7 @@ app.get('/',function(req,res){
     };
     let req1 = https.request(request_params,function(response){
     let body = '';
-
+     let item ='';
     response.on('data', function (d) {
         body += d;
     });
@@ -224,11 +224,12 @@ app.get('/',function(req,res){
             var count = 1;
           for(element in obj['value']){
             if(obj['value'][element]['contentUrl']){
-              console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
+             // console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
+             item =`<img src = '${obj['value'][element]['contentUrl']}'/>`;
           }else console.log(`${count++}: undefined`);
         }  
             console.log("end function");
-            res.send("Hello "+term);
+            res.json({value:item});
         });
         response.on('error', function (e) {
             console.log('Error: ' + e.message);

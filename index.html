@@ -29,8 +29,8 @@
                     },
                     function(data,status){
                        //var htmlImg =  JSON.parse(data);
-                        $('#content').html(data);
-                        console.log(data);
+                        $('#content').html(data['value']);
+                        console.log(data['value']);
                     });
                 });
         });

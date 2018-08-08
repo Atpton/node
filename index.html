@@ -28,9 +28,9 @@
                       
                     },
                     function(data,status){
-                       var htmlImg =  JSON.parse(data);
-                        $('#content').html(htmlImg['value']);
-                        console.log("Data: " + htmlImg + "\nStatus: " + status);
+                       //var htmlImg =  JSON.parse(data);
+                        $('#content').html(data);
+                        console.log("Data: " + data + "\nStatus: " + status);
                     });
                 });
         });

@@ -22,7 +22,7 @@
          $(document).ready(function(){
                 $("#bt1").click(function(){
                     let textVal = document.getElementById('t').value;
-                    console.log('Query '+text);
+                    console.log('Query '+textVal);
                     let url = `https://${host}/getitem`;
                     $.get(url,
                     {

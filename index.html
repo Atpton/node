@@ -24,13 +24,14 @@
                     let textVal = document.getElementById('t').value;
                     console.log('Query '+textVal);
                     let url = `https://${host}/getitem?item=${textVal}`;
-                    $.get(url,
-                    {
-   
-                    },
-                    function(data,status){
+                    $.get(url,{},function(data,status){
                        //var htmlImg =  JSON.parse(data);
-                        $('#content').html(data['value']);
+                        var arrImg = data['value'];
+                        $('#content').html('');
+                        for(element:arrImg){
+                          $('#content').append(element);  
+                        }
+                        //$('#content').html(data['value']);
                         console.log(data['value']);
                     });
                 });

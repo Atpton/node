@@ -206,11 +206,12 @@ app.get('/home',(req,res)=>{
 
 app.get('/getitem',function(req,res){
   //bing_image_search(term);
-   console.log('Searching images for: ' + term);
+   var itemqy = req.query['item'];
+   console.log('Searching images for: ' + itemqy);
    let request_params = {
         method : 'GET',
         hostname : host,
-        path : path + '?q=' + encodeURIComponent(term),
+        path : path + '?q=' + encodeURIComponent(itemqy),
         headers : {
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }

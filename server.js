@@ -238,6 +238,7 @@ app.get('/getitem',function(req,res){
             if(obj['value'][element]['contentUrl']){
              // console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
              item =`<img src = '${obj['value'][element]['contentUrl']}'/>`;
+             break;
           }else console.log(`${count++}: undefined`);
         }  
             console.log("end function");

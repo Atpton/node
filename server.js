@@ -129,7 +129,7 @@
 
 
 
-const path = require('path');
+const pathApi = require('path');
 const http = require('http');
 let https = require('https');
 const bodyParser = require('body-parser');
@@ -195,7 +195,7 @@ let bing_image_search = function (search) {
 }
 
 app.get('/home',(req,res)=>{
-   var pathFile = path.join(__dirname,"./index.html");
+   var pathFile = pathApi.join(__dirname,"./index.html");
    console.log(__dirname);
    console.log(pathFile);
    res.sendFile(pathFile,function(err){

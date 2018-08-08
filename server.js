@@ -188,14 +188,54 @@ let bing_image_search = function (search) {
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
- console.log("Test head: host:"+request_params['hostname']+"   path:"+request_params['path']);
+ //console.log("Test head: host:"+request_params['hostname']+"   path:"+request_params['path']);
     let req = https.request(request_params, response_handler);
     console.log("Test");
     req.end();
 }
 app.get('/',function(req,res){
-  bing_image_search(term);
- 
+  //bing_image_search(term);
+   console.log('Searching images for: ' + term);
+   let request_params = {
+        method : 'GET',
+        hostname : host,
+        path : path + '?q=' + encodeURIComponent(term),
+        headers : {
+            'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
+    let req = https.request(request_params,function(response){
+    let body = '';
+
+    response.on('data', function (d) {
+        body += d;
+    });
+
+    response.on('end', function () {
+            console.log('\nRelevant Headers:\n');
+            for (var header in response.headers)
+                // header keys are lower-cased by Node.js
+                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                     console.log(header + ": " + response.headers[header]);
+            body = JSON.stringify(JSON.parse(body), null, '  ');
+            console.log('\nJSON Response:\n');
+            console.log(body);
+            var obj  = JSON.parse(body);
+            var count = 1;
+          for(element in obj['value']){
+            if(obj['value'][element]['contentUrl']){
+              console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
+          }else console.log(`${count++}: undefined`);
+        }  
+            console.log("end function");
+            res.send("Hello "+term);
+        });
+        response.on('error', function (e) {
+            console.log('Error: ' + e.message);
+        });
+    });
+    console.log("Test");
+    req.end();
   //res.send("Hello world "+term);
   console.log("Search "+term);
 });

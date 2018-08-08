@@ -22,13 +22,15 @@
          $(document).ready(function(){
                 $("#bt1").click(function(){
                     //let text = document.getElementById('t').value;
-                    let url = `http://${host}/getitem`;
-                    $.get('https://nodeton.herokuapp.com/getitem',
+                    let url = `https://${host}/getitem`;
+                    $.get(url,
                     {
                       
                     },
                     function(data,status){
-                        console.log("Data: " + data + "\nStatus: " + status);
+                       var htmlImg =  JSON.parse(data)['value'];
+                        $('#content').html(htmlImg);
+                        console.log("Data: " + htmlImg + "\nStatus: " + status);
                     });
                 });
         });
@@ -38,7 +40,7 @@
             <button id = 'bt1'>Click</button>
             <input type='text' id = 't'/>
             <div id = 'content'>
-                <img src = 'https://wallpapercave.com/wp/wc1686615.jpg'/>
+               
             </div>
     </body>
 </html>

@@ -234,12 +234,12 @@ app.get('/getitem',function(req,res){
             console.log('\nJSON Response:\n');
             //console.log(body);
             var obj  = JSON.parse(body);
-            var count = 1;
+            var count = 0;
           for(element in obj['value']){
             if(obj['value'][element]['contentUrl']){
              // console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
              item[count++] =`<img src = '${obj['value'][element]['contentUrl']}' width="400" height="250"/>`;
-             if(count==5) break;
+             if(count==6) break;
           }else console.log(`${count}: undefined`);
         }  
             console.log("end function");

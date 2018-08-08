@@ -204,7 +204,7 @@ app.get('/',function(req,res){
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
-    let req = https.request(request_params,function(response){
+    let req1 = https.request(request_params,function(response){
     let body = '';
 
     response.on('data', function (d) {
@@ -235,7 +235,7 @@ app.get('/',function(req,res){
         });
     });
     console.log("Test");
-    req.end();
+    req1.end();
   //res.send("Hello world "+term);
   console.log("Search "+term);
 });

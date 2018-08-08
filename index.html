@@ -23,10 +23,10 @@
                 $("#bt1").click(function(){
                     let textVal = document.getElementById('t').value;
                     console.log('Query '+textVal);
-                    let url = `https://${host}/getitem`;
+                    let url = `https://${host}/getitem?item=${textVal}`;
                     $.get(url,
                     {
-                      text:textVal
+   
                     },
                     function(data,status){
                        //var htmlImg =  JSON.parse(data);

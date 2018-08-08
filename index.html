@@ -12,7 +12,7 @@
                         }
                     };
                    let text = document.getElementById('t').value;
-                   let url = `http://${host}/?item=${text}`;
+                   let url = `http://${host}/getitem?item=${text}`;
                    console.log(text);
                     console.log(url);
                     xhttp.open("GET", url, true);

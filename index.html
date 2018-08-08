@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script>
+      //  alert(window.location.hostname);
+        function loadDoc() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange=function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("content").innerHTML = `<img src ='${JSON.parse(this.responseText)['value']}'/>`;
+                        }
+                    };
+                   let text = document.getElementById('t').value;
+                    alert(text);
+                    xhttp.open("GET", `http://localhost:8080/list?item=${text}`, true);
+                    xhttp.send();
+}
+        </script>
+    </head>
+    <body>
+            <button onclick="loadDoc();">Click</button>
+            <input type='text' id = 't'/>
+            <div id = 'content'>
+                <img src = 'https://wallpapercave.com/wp/wc1686615.jpg'/>
+            </div>
+    </body>
+</html>

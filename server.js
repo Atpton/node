@@ -109,7 +109,7 @@ function appdialog(){
       console.log("OK get in Ais play Service intent");
     });
     this.app.intent('Default Fallback Intent',(conv)=>{
-              conv.ask(conv.body.requestResult);
+              conv.ask(conv.body.queryResult.queryText);
              console.log("OK get in fallback ");
     });
 }

@@ -1,1 +1,44 @@
-Hello Do you have any Problem ?.
+	
+  
+  public static int getMaxSizeList(LinkedList<LinkedList<Randomwalk>> list){
+		int max = Integer.MIN_VALUE;
+		for(LinkedList<Randomwalk> listRun : list){
+			if(max>listRun.size()) max = listRun.size();
+		}
+		return max;
+	}
+  
+  
+  
+  
+  String sum ="";
+		Iterator<LinkedList<Randomwalk>> itr = list.iterator();
+		int maxSize = getMaxSizeList(list);
+		LinkedList<String> tempStringList = new LinkedList<>();
+		for(int index=0;index<maxSize;index++) tempStringList.add("<tr>");
+		
+		while(itr.hasNext()){
+			   LinkedList<Randomwalk> llrw = 	 itr.next();
+				for(Randomwalk rw : llrw){
+					
+					String temp = "<td bgcolor='"+Color[rw.getParameterList().getLevel()-1]+"' >Lvl : "+rw.getParameterList().getLevel()+" W : [ ";
+					String stringDoc = "";
+					if(rw.getParameterList().getLevel()==1)
+						for(DocumentObj doc :rw.getDocumentObj())
+							stringDoc+=new DecimalFormat("#0.00").format(Double.parseDouble(doc.getW())).toString()+",";
+					else{
+						for(DocumentObj doc :rw.getDocumentObj())
+							stringDoc+="|"+new DecimalFormat("#0.00").format((doc.getMin())).toString()+"-"+new DecimalFormat("#0.00").format((doc.getMax())).toString()+"|,";
+					}
+					if(!stringDoc.equals(""))
+						stringDoc = stringDoc.substring(0,stringDoc.length()-1);
+					else
+						stringDoc = "Empty";
+					temp+=stringDoc+" ]</td>   ";
+					tempStringList.set(rw.getParameterList().getLevel()-1, tempStringList.get(rw.getParameterList().getLevel()-1)+temp);
+				}
+				for(int index=rw.getParameterList().getLevel();index<maxSize;index++) 
+					tempStringList.set(index,tempStringList.get(index)+"<td></td>");
+		}
+		
+		for(int index=0;index<maxSize;index++) sum+=tempStringList.get(index)+"</tr>";

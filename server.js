@@ -39,27 +39,29 @@ _axios2.default.interceptors.response.use(function (res) {
 // });
 app.get("/",testcall);
 async function testcall(req,res){
-  console.log("inpost");
-   var header = {};
-   var agent = new _https2.default.Agent({
-            rejectUnauthorized: false
-    });
-    //  header['Content-Type'] ='application/x-www-form-urlencoded';
-    var randomNumber = Math.floor(Math.random() * 1000000 + 1).toString();
-    header['x-api-request-id'] = 'self-' + new Date().getTime() + randomNumber;
-    header['httpsAgent']=agent;
-    var body = {    
-                    term:"รักนะคะ",
-                    method: "display",
-                    channel: "Google_Assistant",
-                    intent: "message",
-                    timeout: 6000,
-                    userId:"111111111"
-               };
-  var resData = await _axios2.default.post("https://dev-askaunjai.ais.co.th:8443/social-adapter-fe/chatbot",body,header);
-  console.log("T");
-  console.log(resData.data);
-  res.json({message:resData.data});
+  // console.log("inpost");
+  //  var header = {};
+  //  var agent = new _https2.default.Agent({
+  //           rejectUnauthorized: false
+  //   });
+  //   //  header['Content-Type'] ='application/x-www-form-urlencoded';
+  //   var randomNumber = Math.floor(Math.random() * 1000000 + 1).toString();
+  //   header['x-api-request-id'] = 'self-' + new Date().getTime() + randomNumber;
+  //   header['httpsAgent']=agent;
+  //   var body = {    
+  //                   term:"รักนะคะ",
+  //                   method: "display",
+  //                   channel: "Google_Assistant",
+  //                   intent: "message",
+  //                   timeout: 6000,
+  //                   userId:"111111111"
+  //              };
+  // var resData = await _axios2.default.post("https://dev-askaunjai.ais.co.th:8443/social-adapter-fe/chatbot",body,header);
+  // console.log("T");
+  // console.log(resData.data);
+  // res.json({message:resData.data});
+  console.log("in Get");
+  res.send("Hello");
 }
 //http.createServer(app).listen(port,()=>{
 //console.log("Create Server port :"+port);

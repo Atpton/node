@@ -58,8 +58,8 @@ async function testcall(req,res){
     body['timeout'] = 10000;
     body['assertion']=`eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkcGktZHBhLW1vYmlsZS1kYXRhcGxhbi1hZGFwdG9Ac3VzdGFpbmVkLW5vZGUtMjEzMTEzLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwic2NvcGUiOiJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2RhdGFwbGFuc2hhcmluZyIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92NC90b2tlbiIsImV4cCI6MTUzNTAyMzExNiwiaWF0IjoxNTM1MDE5NTE2LCJNU0lTRE4iOiIwOTMyNzgwMDE0In0.0L56IbGPf7Hfol2OBl4cd60qv-XBlvpc3UgqXumXkyRRTUC7PazxKRnR79DuLR4Lo63X25AF0B47pme_MvapUQrrsSNtS68qgrA6DCnEwZh8NdXLfyyZF11xFgbBjERoqcnGfABAaN3aainB_JTfwfVZk4-ak9a8Cqjc7jfsy9VSwm-gEULHrTwbY6u2EOFseiiUjWcPJBj9lOuFn51A7tQevtPmRBXZkw8UDIlP15vK-9Fmn_5JnYEwzTZdEkCputGZnQdPldCkVteEkqdW8t9MKM96oZdDORMo8ZIYT-BtohqDQbpA-vpeG06AmNENOO-bzljaDAQ4GsB4OO7w0g`;
     var url = "https://www.googleapis.com/oauth2/v4/token";
-   console.log("body: "+body);
-   console.log("Headder"+header);
+   console.log("body: grant: "+body['grant_type']+"  assert: "+body['assertion']);
+   console.log("Headder"+header['Content-Type']);
   var resData = await _axios2.default.post(url,body,header);
   console.log("T");
   console.log(resData.data);

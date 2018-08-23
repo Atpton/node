@@ -52,7 +52,7 @@ async function testcall(req,res){
     header['Content-Type'] ='application/x-www-form-urlencoded';
     //var randomNumber = Math.floor(Math.random() * 1000000 + 1).toString();
    // header['x-api-request-id'] = 'self-' + new Date().getTime() + randomNumber;
-    header['httpsAgent']=agent;
+   // header['httpsAgent']=agent;
     var body = {};
     body['grant_type'] ='urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&';
     body['timeout'] = 10000;

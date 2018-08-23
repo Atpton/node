@@ -49,24 +49,20 @@ async function testcall(req,res){
    var agent = new _https2.default.Agent({
             rejectUnauthorized: false
     });
-    //  header['Content-Type'] ='application/x-www-form-urlencoded';
-    var randomNumber = Math.floor(Math.random() * 1000000 + 1).toString();
-    header['x-api-request-id'] = 'self-' + new Date().getTime() + randomNumber;
+    header['Content-Type'] ='application/x-www-form-urlencoded';
+    //var randomNumber = Math.floor(Math.random() * 1000000 + 1).toString();
+   // header['x-api-request-id'] = 'self-' + new Date().getTime() + randomNumber;
     header['httpsAgent']=agent;
-    var body = {    
-                    term:"รักนะคะ",
-                    method: "display",
-                    channel: "Google_Assistant",
-                    intent: "message",
-                    timeout: 6000,
-                    userId:"111111111"
-               };
-  var resData = await _axios2.default.post("https://dev-askaunjai.ais.co.th:8443/social-adapter-fe/chatbot",body,header);
+    var body = {};
+    body['grant_type'] ='urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&';
+    body['timeout'] = 10000;
+    body['assertion']=`eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkcGktZHBhLW1vYmlsZS1kYXRhcGxhbi1hZGFwdG9Ac3VzdGFpbmVkLW5vZGUtMjEzMTEzLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwic2NvcGUiOiJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2RhdGFwbGFuc2hhcmluZyIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92NC90b2tlbiIsImV4cCI6MTUzNTAyMzExNiwiaWF0IjoxNTM1MDE5NTE2LCJNU0lTRE4iOiIwOTMyNzgwMDE0In0.0L56IbGPf7Hfol2OBl4cd60qv-XBlvpc3UgqXumXkyRRTUC7PazxKRnR79DuLR4Lo63X25AF0B47pme_MvapUQrrsSNtS68qgrA6DCnEwZh8NdXLfyyZF11xFgbBjERoqcnGfABAaN3aainB_JTfwfVZk4-ak9a8Cqjc7jfsy9VSwm-gEULHrTwbY6u2EOFseiiUjWcPJBj9lOuFn51A7tQevtPmRBXZkw8UDIlP15vK-9Fmn_5JnYEwzTZdEkCputGZnQdPldCkVteEkqdW8t9MKM96oZdDORMo8ZIYT-BtohqDQbpA-vpeG06AmNENOO-bzljaDAQ4GsB4OO7w0g`;
+    var url = "https://www.googleapis.com/oauth2/v4/token";
+  var resData = await _axios2.default.post(url,body,header);
   console.log("T");
   console.log(resData.data);
   res.json({message:resData.data});
-  // console.log("in Get");
-  // res.send("Hello");
+ 
 }
 //http.createServer(app).listen(port,()=>{
 //console.log("Create Server port :"+port);

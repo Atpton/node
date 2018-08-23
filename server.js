@@ -16,7 +16,7 @@ var http = require('http');
 //var _http2 = _interopRequireDefault(_http);
 
 let app = express();
-app.use(serveStatic('./'));
+//app.use(serveStatic('./'));
 var port =process.env.PORT || 3000;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 _axios2.default.defaults.timeout = 6000;

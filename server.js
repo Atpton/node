@@ -1,253 +1,50 @@
-const { dialogflow } =  require('actions-on-google'); 
-const bodyParser = require('body-parser');
-const express = require('express');
-const serveStatic = require('serve-static');
-var fs = require('fs');
-var { Image } = require('actions-on-google');
-var port =process.env.PORT || 3000;
-let app = express();
-app.use(serveStatic('./'));
-
-
-let https = require('https');
-
+var _express = require('express');
 
  
-let subscriptionKey = '31bbf02e5b6940b99e07a7e07acd4180';
- 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/images/search';
+var _https = require('https');
 
-let term = 'liverpool';
+var _https2 = _interopRequireDefault(_https);
 
-let response_handler = function (response) {
-    let body = '';
+var _axios = require('axios');
+var axios = require('axios');
 
-    response.on('data', function (d) {
-        body += d;
+var _axios2 = _interopRequireDefault(_axios);
+
+
+var _http = require('http');
+
+var _http2 = _interopRequireDefault(_http);
+
+var app = _express();
+var port = process.env.APP_PORT||80;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+// app.post("/",function(req,res){
+//  res.json({name:`ton`});
+// });
+app.get("/",testcall);
+async function testcall(req,res){
+  console.log("inpost");
+   var header = {};
+   var agent = new _https2.default.Agent({
+            rejectUnauthorized: false
     });
-
-    response.on('end', function () {
-        console.log('\nRelevant Headers:\n');
-        for (var header in response.headers)
-            // header keys are lower-cased by Node.js
-            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                 console.log(header + ": " + response.headers[header]);
-        body = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log('\nJSON Response:\n');
-        console.log(body);
-        var obj  = JSON.parse(body);
-     var count = 1;
-      for(element in obj['value']){
-        if(obj['value'][element]['contentUrl']){
-          console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
-      }else console.log(`${count++}: undefined`);
-}  
-        console.log("end function");
-      
-    });
-    response.on('error', function (e) {
-        console.log('Error: ' + e.message);
-    });
-};
-
-let bing_image_search = function (search) {
-  console.log('Searching images for: ' + term);
-  let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + '?q=' + encodeURIComponent(search),
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
-  
-    let req = https.request(request_params, response_handler);
-    console.log("Test");
-    req.end();
+    //  header['Content-Type'] ='application/x-www-form-urlencoded';
+    var randomNumber = Math.floor(Math.random() * 1000000 + 1).toString();
+    header['x-api-request-id'] = 'self-' + new Date().getTime() + randomNumber;
+    header['httpsAgent']=agent;
+    var body = {    
+                    term:"รักนะคะ",
+                    method: "display",
+                    channel: "Google_Assistant",
+                    intent: "message",
+                    timeout: 1000,
+                    userId:"111111111"
+               };
+  var resData = await _axios2.default.post("https://dev-askaunjai.ais.co.th:8443/social-adapter-fe/chatbot",body,header);
+  console.log("T");
+  console.log(resData.data);
+  res.json({message:resData.data});
 }
-
-
-function appdialog(){
-    this.app = dialogflow({debug: true});
-    this.app.intent('Default Welcome Intent', (conv) => {
-         conv.ask('\n Welcome to Your Nightmare. !');
-    console.log("OK get in Default intent ");
-    });
-    this.app.intent('Play Football', (conv) => {
-     fs.readFile('./test.txt',(err,data)=>{
-       if(err){
-        console.log(err);
-       }else{
-        console.log(data.toString());
-        //conv.ask(data.toString());
-       }
-     });
-      conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
-      conv.ask(new Image({
-      //  url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
-        url:"http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg",
-        alt: 'Image alternate text',
-      }));
-      console.log("OK get in hi intent");
-    });
-    this.app.intent('Ais Play Football', (conv) => {
-      conv.ask("Hello i'm ton do you know Liverpool Football club ?.");
-      conv.ask(new Image({
-     //   url:  "https://nodeton.herokuapp.com/thumb-no-image-2.jpg",
-        url:"http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg",
-        alt: 'Image alternate text',
-      }));
-      console.log("OK get in hi intent");
-    });
-      this.app.intent('AIS Play Service', (conv) => {
-      conv.ask('hello Ais play Service. !');
-      console.log("OK get in Ais play Service intent");
-    });
-     this.app.intent('Check Balance', (conv) => {
-      conv.ask('hello Check Balance Service. !');
-      console.log("OK get in Ais play Service intent");
-    });
-    this.app.intent('Default Fallback Intent',(conv)=>{
-              conv.ask(conv.body.queryResult.queryText);
-             console.log("OK get in fallback ");
-    });
-}
- 
-let app1 = new appdialog();
-app.use(bodyParser.json());
-app.use("/",(req,res,next)=>{
-    console.log("get in.");
-
-    next();
-},app1.app);
-app.listen(port);
+_http2.default.createServer(app).listen(port,()=>{
 console.log("Create Server port :"+port);
-
-/*const pathApi = require('path');
-const http = require('http');
-let https = require('https');
-const bodyParser = require('body-parser');
-const express = require('express');
-const serveStatic = require('serve-static');
-var fs = require('fs');
-var port =process.env.PORT || 3000;
-let app = express();
-app.use(serveStatic('./'));
-let subscriptionKey = '31bbf02e5b6940b99e07a7e07acd4180'; 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/images/search';
-let term = 'liverpool';
-
-
-
-let response_handler = function (response) {
-    let body = '';
-
-    response.on('data', function (d) {
-        body += d;
-    });
-
-    response.on('end', function () {
-        console.log('\nRelevant Headers:\n');
-        for (var header in response.headers)
-            // header keys are lower-cased by Node.js
-            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                 console.log(header + ": " + response.headers[header]);
-        body = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log('\nJSON Response:\n');
-        console.log(body);
-        var obj  = JSON.parse(body);
-        var count = 1;
-      for(element in obj['value']){
-        if(obj['value'][element]['contentUrl']){
-          console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
-      }else console.log(`${count++}: undefined`);
-    }  
-        console.log("end function");
-      
-    });
-    response.on('error', function (e) {
-        console.log('Error: ' + e.message);
-    });
-};
-
-
-let bing_image_search = function (search) {
-  console.log('Searching images for: ' + term);
-  let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + '?q=' + encodeURIComponent(search),
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
- //console.log("Test head: host:"+request_params['hostname']+"   path:"+request_params['path']);
-    let req = https.request(request_params, response_handler);
-    console.log("Test");
-    req.end();
-}
-
-app.get('/home',(req,res)=>{
-   var pathFile = pathApi.join(__dirname,"./index.html");
-   console.log(__dirname);
-   console.log(pathFile);
-   res.sendFile(pathFile,function(err){
-       if(err) console.log(`error ${err}`);
-       else console.log("it's ok");
-   });
 });
-
-app.get('/getitem',function(req,res){
-  //bing_image_search(term);
-   var itemqy = req.query['item'];
-  
-   console.log('Searching images for: ' + itemqy);
-   let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + '?q=' + encodeURIComponent(itemqy),
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
-    let req1 = https.request(request_params,function(response){
-    let body = '';
-     let item =[];
-    response.on('data', function (d) {
-        body += d;
-    });
-
-    response.on('end', function () {
-            console.log('\nRelevant Headers:\n');
-            for (var header in response.headers)
-                 
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            console.log('\nJSON Response:\n');
-            //console.log(body);
-            var obj  = JSON.parse(body);
-            var count = 0;
-          for(element in obj['value']){
-            if(obj['value'][element]['contentUrl']){
-             // console.log(`${count++} : ${obj['value'][element]['contentUrl']}`);
-             item[count++] =`<img src = '${obj['value'][element]['contentUrl']}' width="400" height="250"/>`;
-             if(count==6) break;
-          }else console.log(`${count}: undefined`);
-        }  
-            console.log("end function");
-            res.json({value:item});
-        });
-        response.on('error', function (e) {
-            console.log('Error: ' + e.message);
-        });
-    });
-    console.log("Test");
-    req1.end();
-  //res.send("Hello world "+term);
-  console.log("Search "+term);
-});
-var server = http.createServer(app).listen(port,()=>{console.log("Create Server"+port)});
-*/

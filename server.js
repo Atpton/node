@@ -1,8 +1,8 @@
-var _express = require('express');
+const express = require('express');
 
- 
+ const bodyParser = require('body-parser');
 var _https = require('https');
-
+const serveStatic = require('serve-static');
 var _https2 = _interopRequireDefault(_https);
 
 var _axios = require('axios');
@@ -15,8 +15,9 @@ var http = require('http');
 
 //var _http2 = _interopRequireDefault(_http);
 
-var app = _express();
-var port = process.env.APP_PORT||3000;
+let app = express();
+app.use(serveStatic('./'));
+var port =process.env.PORT || 3000;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 _axios2.default.defaults.timeout = 6000;
 
@@ -37,6 +38,10 @@ _axios2.default.interceptors.response.use(function (res) {
 // app.post("/",function(req,res){
 //  res.json({name:`ton`});
 // });
+app.get("/test",function(req,res){
+console.log("in test");
+res.send("in test");
+});
 app.get("/",testcall);
 async function testcall(req,res){
   // console.log("inpost");
@@ -67,3 +72,4 @@ async function testcall(req,res){
 //console.log("Create Server port :"+port);
 //});
 app.listen(port);
+console.log("Create Server : "+port);

@@ -1,5 +1,5 @@
 {
-  "name": "node",
+  "name": "node1",
   "scripts": {
        "start":"pm2 start server.js"
   },

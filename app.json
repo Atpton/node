@@ -1,7 +1,7 @@
 {
-  "name": "node1",
+  "name": "node",
   "scripts": {
-       "start":"pm2 start server.js"
+       "start":"pm2 start pm2-dev.json"
   },
   "env": {
   },

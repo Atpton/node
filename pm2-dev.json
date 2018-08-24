@@ -1,0 +1,22 @@
+{
+    "apps": [{
+        "exec_mode": "cluster",
+        "instances": 1,
+        "script": "./server.js",
+        "name": "mobileDataPlan",
+        "interpreter": "./node_modules/.bin/babel-node",
+        "retain": "all",
+                "compress": true,
+                "dateFormat": "YYYY-MM-DD_HH-mm-ss",
+                "workerInterval": 10,
+                "rotateInterval": "*/60 * * * *",
+        "rotateModule": true,
+
+        "env": {
+            "NODE_ENV": "production",
+            "APP_HOST": "0.0.0.0",
+            "APP_PORT": "3000"
+        }
+    }]
+
+}

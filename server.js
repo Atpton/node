@@ -66,8 +66,8 @@ async function testcall(req,res){
   res.json({message:resData.data});
  
 }
-//http.createServer(app).listen(port,()=>{
-//console.log("Create Server port :"+port);
-//});
-app.listen(port);
-console.log("Create Server : "+port);
+http.createServer(app).listen(port,()=>{
+console.log("Create Server port :"+port);
+});
+//app.listen(port);
+//console.log("Create Server : "+port);

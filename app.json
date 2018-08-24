@@ -1,7 +1,7 @@
 {
   "name": "node",
   "scripts": {
-    "postdeploy": ""
+       "start":"pm2 start server.js"
   },
   "env": {
   },

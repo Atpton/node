@@ -1,5 +1,5 @@
 const express = require('express');
-
+var request1 = require('request').defaults({ encoding: null });
  const bodyParser = require('body-parser');
 var _https = require('https');
 const serveStatic = require('serve-static');
@@ -39,8 +39,17 @@ _axios2.default.interceptors.response.use(function (res) {
 //  res.json({name:`ton`});
 // });
 app.get("/test",function(req,res){
-console.log("in test");
-res.send("in test");
+
+
+request1.get('https://ibb.co/bSEi5K', function (error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+        data = "data:" + response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');
+        console.log(data);
+    }else{
+        console.log(error.message)
+    }
+});
 });
 app.get("/",testcall);
 async function testcall(req,res){

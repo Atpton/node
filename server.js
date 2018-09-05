@@ -41,7 +41,7 @@ _axios2.default.interceptors.response.use(function (res) {
 app.get("/test",function(req,res){
 
 
-request1.get('https://ibb.co/bSEi5K', function (error, response, body) {
+request1.get('https://image.ibb.co/djOMsz/request_Author.png', function (error, response, body) {
 
     if (!error && response.statusCode == 200) {
         data = "data:" + response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');

@@ -119,13 +119,13 @@ function appdialog(){
  
     this.app.intent('Default Fallback Intent',(conv)=>{
      var googleUrl = "https://www.google.com/";
-         /*     conv.ask(new BrowseCarousel({
+         conv.ask(new BrowseCarousel({
   items: [
     new BrowseCarouselItem({
       title: 'Title of item 1',
       url: googleUrl,
       image: new Image({
-        url: ' https://scontent.fbkk9-2.fna.fbcdn.net/v/t1.15752-9/40844977_536817820116699_4642949794044575744_n.png?_nc_cat=0&oh=06780832d12365eb83779739cdd01ec9&oe=5C2181CE',
+        url: ' http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg',
         alt: 'asd',
       }),
       description: 'Description of item 1',
@@ -135,15 +135,15 @@ function appdialog(){
       title: 'Title of item 2',
       url: googleUrl,
       image: new Image({
-        url: ' https://scontent.fbkk9-2.fna.fbcdn.net/v/t1.15752-9/40844977_536817820116699_4642949794044575744_n.png?_nc_cat=0&oh=06780832d12365eb83779739cdd01ec9&oe=5C2181CE',
+        url: 'http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg',
         alt: 'asd',
       }),
       description: 'Description of item 2',
       footer: 'Item 2 footer',
-    }),
-  ],
-}));*/
-     conv.ask('Hey');
+    })
+  ]
+}));
+     
     });
 }
  

@@ -119,7 +119,7 @@ function appdialog(){
  
     this.app.intent('Default Fallback Intent',(conv)=>{
      var googleUrl = "https://www.google.com/";
-              conv.ask(new BrowseCarousel({
+         /*     conv.ask(new BrowseCarousel({
   items: [
     new BrowseCarouselItem({
       title: 'Title of item 1',
@@ -142,7 +142,8 @@ function appdialog(){
       footer: 'Item 2 footer',
     }),
   ],
-}));
+}));*/
+     conv.ask('Hey');
     });
 }
  

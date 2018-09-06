@@ -126,7 +126,7 @@ function appdialog(){
       url: googleUrl,
       image: new Image({
         url: ' https://scontent.fbkk9-2.fna.fbcdn.net/v/t1.15752-9/40844977_536817820116699_4642949794044575744_n.png?_nc_cat=0&oh=06780832d12365eb83779739cdd01ec9&oe=5C2181CE',
-        alt: a11yText,
+        alt: 'asd',
       }),
       description: 'Description of item 1',
       footer: 'Item 1 footer',
@@ -136,7 +136,7 @@ function appdialog(){
       url: googleUrl,
       image: new Image({
         url: ' https://scontent.fbkk9-2.fna.fbcdn.net/v/t1.15752-9/40844977_536817820116699_4642949794044575744_n.png?_nc_cat=0&oh=06780832d12365eb83779739cdd01ec9&oe=5C2181CE',
-        alt: a11yText,
+        alt: 'asd',
       }),
       description: 'Description of item 2',
       footer: 'Item 2 footer',

@@ -33,7 +33,9 @@ function appdialog(){
          conv.ask('\n Welcome to Your Nightmare. !');
     console.log("OK get in Default intent ");
     });
- 
+    this.app.intent("infouser",(conv)=>{
+     conv.ask("Heyyyyy");
+    });
     this.app.intent('Default Fallback Intent',(conv)=>{
      conv.ask("Hello");
          conv.ask(new _actionsOnGoogle.Permission({

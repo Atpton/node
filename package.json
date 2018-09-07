@@ -9,7 +9,7 @@
   "author": "Auttapon siriwaramas",
   "license": "ISC",
   "dependencies": {
-    "actions-on-google": "^2.0.0",
+    "actions-on-google": "^2.3.0",
     "express": "^4.14.0",
     "axios":"^0.18.0",
     "request":"^2.88.0"

@@ -39,8 +39,8 @@ function appdialog(){
     this.app.intent('Default Fallback Intent',(conv)=>{
      conv.ask("Hello");
          conv.ask(new _actionsOnGoogle.Permission({
-      context: 'To read your mind',
-      permissions: ['DEVICE_COARSE_LOCATION',"NAME"]
+      context: '',
+      permissions: ['DEVICE_PRECISE_LOCATION',"NAME"]
     }))   
     });
 }

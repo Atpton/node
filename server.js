@@ -84,8 +84,7 @@ console.log("Create Server port :"+port);
 
 const { dialogflow } =  require('actions-on-google'); 
 var { BrowseCarousel } = require('actions-on-google');
-var { BrowseCarouselItem } = require('actions-on-google');+
- 
+var { BrowseCarouselItem } = require('actions-on-google');
 const bodyParser = require('body-parser');
 const express = require('express');
 const serveStatic = require('serve-static');

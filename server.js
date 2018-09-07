@@ -1,4 +1,5 @@
 const { dialogflow } =  require('actions-on-google'); 
+var _actionsOnGoogle = require('actions-on-google');
 var { BrowseCarousel } = require('actions-on-google');
 var { BrowseCarouselItem } = require('actions-on-google');
 const bodyParser = require('body-parser');

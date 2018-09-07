@@ -118,7 +118,7 @@ function appdialog(){
     });
  
     this.app.intent('Default Fallback Intent',(conv)=>{
-     conv.ask("Hello);
+     conv.ask("Hello");
          conv.ask(new Permission({
       context: 'To read your mind',
       permissions: 'NAME',

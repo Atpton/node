@@ -1,7 +1,6 @@
 const { dialogflow } =  require('actions-on-google'); 
 var { BrowseCarousel } = require('actions-on-google');
 var { BrowseCarouselItem } = require('actions-on-google');
-const {Permission} = require('Permission');
 const bodyParser = require('body-parser');
 const express = require('express');
 const serveStatic = require('serve-static');
@@ -36,7 +35,7 @@ function appdialog(){
  
     this.app.intent('Default Fallback Intent',(conv)=>{
      conv.ask("Hello");
-         conv.ask(new Permission({
+         conv.ask(new _actionsOnGoogle.Permission({
       context: 'To read your mind',
       permissions: 'NAME',
     }))   

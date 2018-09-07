@@ -85,7 +85,7 @@ console.log("Create Server port :"+port);
 const { dialogflow } =  require('actions-on-google'); 
 var { BrowseCarousel } = require('actions-on-google');
 var { BrowseCarouselItem } = require('actions-on-google');+
-var { Permission } = require('actions-on-google');
+ 
 const bodyParser = require('body-parser');
 const express = require('express');
 const serveStatic = require('serve-static');
@@ -120,7 +120,10 @@ function appdialog(){
  
     this.app.intent('Default Fallback Intent',(conv)=>{
      conv.ask("Hello);
-     conv.ask(new Permission({context, permission}));     
+         conv.ask(new Permission({
+      context: 'To read your mind',
+      permissions: 'NAME',
+    }))   
     });
 }
  

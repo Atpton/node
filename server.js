@@ -38,7 +38,7 @@ function appdialog(){
      conv.ask("Hello");
          conv.ask(new _actionsOnGoogle.Permission({
       context: 'To read your mind',
-      permissions: 'NAME',
+      permissions: 'DEVICE_PRECISE_LOCATION',
     }))   
     });
 }

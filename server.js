@@ -84,7 +84,8 @@ console.log("Create Server port :"+port);
 
 const { dialogflow } =  require('actions-on-google'); 
 var { BrowseCarousel } = require('actions-on-google');
-var { BrowseCarouselItem } = require('actions-on-google');
+var { BrowseCarouselItem } = require('actions-on-google');+
+var { Permission } = require('actions-on-google');
 const bodyParser = require('body-parser');
 const express = require('express');
 const serveStatic = require('serve-static');
@@ -118,32 +119,8 @@ function appdialog(){
     });
  
     this.app.intent('Default Fallback Intent',(conv)=>{
-     var googleUrl = "https://www.google.com/";
-         conv.ask(new BrowseCarousel({
-  items: [
-    new BrowseCarouselItem({
-      title: 'Title of item 1',
-      url: googleUrl,
-      image: new Image({
-        url: ' http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg',
-        alt: 'asd',
-      }),
-      description: 'Description of item 1',
-      footer: 'Item 1 footer',
-    }),
-    new BrowseCarouselItem({
-      title: 'Title of item 2',
-      url: googleUrl,
-      image: new Image({
-        url: 'http://1.bp.blogspot.com/-jI3cBbu5xZ8/UP2Mrj0QSVI/AAAAAAAAFK8/aF1AIEGG9F4/s1600/Liverpool+FC+Logo+Wallpaper+HD+2013+2.jpg',
-        alt: 'asd',
-      }),
-      description: 'Description of item 2',
-      footer: 'Item 2 footer',
-    })
-  ]
-}));
-     
+     conv.ask("Hello);
+     conv.ask(new Permission({context, permission}));     
     });
 }
  

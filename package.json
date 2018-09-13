@@ -12,7 +12,8 @@
     "actions-on-google": "^2.0.0",
     "express": "^4.14.0",
     "axios":"^0.18.0",
-    "request":"^2.88.0"
+    "request":"^2.88.0",
+    "ejs":"^2.6.1"
   },
     "start": "pm2 start pm2-dev.json"
   

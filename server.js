@@ -64,7 +64,7 @@ app.use("/",(req,res,next)=>{
     console.log("get in.");
     //next();
     res.render('index.html');
-},appDialogFlow);
+});
 app.use("/test",(req,res)=>{
         res.render('index.html');
 });

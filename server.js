@@ -64,8 +64,15 @@ appDialogFlow.intent('Default Fallback Intent',(conv,res)=>{
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
-    next();
-},appDialogFlow);
+   var pathFile = path1.join(__dirname,"./index1.html");
+   console.log(__dirname);
+   console.log(pathFile);
+   res.sendFile(pathFile,function(err){
+     if(err) console.log(`error ${err}`);
+       else console.log("it's ok");
+   });
+  //  next();
+});
 app.use("/test",(req,res)=>{
         res.render('index.html');
 });

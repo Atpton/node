@@ -7,6 +7,8 @@ const express = require('express');
 const serveStatic = require('serve-static');
 var fs = require('fs');
 var { Image } = require('actions-on-google');
+
+var ejs = require('ejs');
 var port =process.env.PORT || 3000;
 let app = express();
 app.use(serveStatic('./'));

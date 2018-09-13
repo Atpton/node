@@ -57,13 +57,13 @@ appDialogFlow.intent('Default Fallback Intent',(conv,res)=>{
         console.info("Resss ");
         console.info(res);
         conv.ask("Hey i'm fallback ");
-        res.render('index.html');
+        
 });
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
-
     next();
+    res.render('index.html');
 },appDialogFlow);
 app.use("/test",(req,res)=>{
         res.render('index.html');

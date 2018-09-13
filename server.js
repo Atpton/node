@@ -45,12 +45,17 @@ function appdialog(){
     });
 }
  
-let app1 = new appdialog();
+//let app1 = new appdialog();
+var appDialogFlow = dialogflow({debug: true});
+appDialogFlow.intent('Default Fallback Intent',(conv)=>{
+        console.info('in fallback');
+        conv.ask("Hey i'm fallback ");
+});
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
 
     next();
-},app1.app);
+},appDialogFlow);
 app.listen(port);
 console.log("Create Server port :"+port);

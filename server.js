@@ -62,7 +62,7 @@ appDialogFlow.intent('Default Fallback Intent',(conv,res)=>{
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
-    next();
+    //next();
     res.render('index.html');
 },appDialogFlow);
 app.use("/test",(req,res)=>{

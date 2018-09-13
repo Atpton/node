@@ -1,5 +1,6 @@
 const { dialogflow } =  require('actions-on-google'); 
 var _actionsOnGoogle = require('actions-on-google');
+
 var { BrowseCarousel } = require('actions-on-google');
 var { BrowseCarouselItem } = require('actions-on-google');
 const bodyParser = require('body-parser');
@@ -57,14 +58,14 @@ appDialogFlow.intent('Default Fallback Intent',(conv,res)=>{
         console.info("Resss ");
         console.info(res);
         conv.ask("Hey i'm fallback ");
+        conv.ask(new _actionsOnGoogle.SignIn('Test'))
         
 });
 app.use(bodyParser.json());
 app.use("/",(req,res,next)=>{
     console.log("get in.");
-    //next();
-    res.render('index.html');
-});
+    next();
+},appDialogFlow);
 app.use("/test",(req,res)=>{
         res.render('index.html');
 });

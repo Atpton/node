@@ -23,7 +23,7 @@ let path = '/bing/v7.0/images/search';
 
 let term = 'liverpool';
 
-
+var path1 = require('path');
 
 
 
@@ -45,6 +45,9 @@ function appdialog(){
     });
 }
  
+app.engine('html', ejs.renderFile);
+app.set('views', path1.join(__dirname, './'));
+app.set('view engine', 'html');
 //let app1 = new appdialog();
 var appDialogFlow = dialogflow({debug: true});
 appDialogFlow.intent('Default Fallback Intent',(conv)=>{
@@ -57,5 +60,11 @@ app.use("/",(req,res,next)=>{
 
     next();
 },appDialogFlow);
+app.use("/test",(req,res)=>{
+        req.render('index.html');
+});
+function resRender(req,res){
+        console.info('inresRender ')
+}
 app.listen(port);
 console.log("Create Server port :"+port);

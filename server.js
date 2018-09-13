@@ -50,8 +50,10 @@ app.set('views', path1.join(__dirname, './'));
 app.set('view engine', 'html');
 //let app1 = new appdialog();
 var appDialogFlow = dialogflow({debug: true});
-appDialogFlow.intent('Default Fallback Intent',(conv)=>{
+appDialogFlow.intent('Default Fallback Intent',(conv,res)=>{
         console.info('in fallback');
+        console.info("Resss ");
+        console.info(res);
         conv.ask("Hey i'm fallback ");
 });
 app.use(bodyParser.json());

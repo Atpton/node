@@ -62,17 +62,7 @@ appDialogFlow.intent('Default Fallback Intent',(conv,res)=>{
         
 });
 app.use(bodyParser.json());
-app.use("/",(req,res,next)=>{
-    console.log("get in.");
-   var pathFile = path1.join(__dirname,"./index1.html");
-   console.log(__dirname);
-   console.log(pathFile);
-   res.sendFile(pathFile,function(err){
-     if(err) console.log(`error ${err}`);
-       else console.log("it's ok");
-   });
-  //  next();
-});
+ 
 app.use("/test",(req,res)=>{
         res.render('index.html');
 });
@@ -81,6 +71,7 @@ function resRender(req,res){
 }
 app.use(iplocate);
 app.get("/locate",(req,res)=>{
+ console.log("locate");
    if(req.locationError){
         // In case of Any error locationError will be populated 
       console.log('req.locationError ',req.locationError)

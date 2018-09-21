@@ -13,7 +13,8 @@
     "express": "^4.14.0",
     "axios":"^0.18.0",
     "request":"^2.88.0",
-    "ejs":"^2.6.1"
+    "ejs":"^2.6.1",
+    "iplocate":"^1.0.7"
   },
     "start": "pm2 start pm2-dev.json"
   

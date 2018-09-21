@@ -8,7 +8,7 @@ const express = require('express');
 const serveStatic = require('serve-static');
 var fs = require('fs');
 var { Image } = require('actions-on-google');
-
+let iplocate = require('iplocate');
 var ejs = require('ejs');
 var port =process.env.PORT || 3000;
 let app = express();
@@ -79,5 +79,15 @@ app.use("/test",(req,res)=>{
 function resRender(req,res){
         console.info('inresRender ')
 }
+app.use(iplocate);
+app.get("/locate",(req,res)=>{
+   if(req.locationError){
+        // In case of Any error locationError will be populated 
+      console.log('req.locationError ',req.locationError)
+    }else {
+       // The location object will be attached to request 
+       console.log('req.location',req.location)
+    }
+});
 app.listen(port);
 console.log("Create Server port :"+port);
